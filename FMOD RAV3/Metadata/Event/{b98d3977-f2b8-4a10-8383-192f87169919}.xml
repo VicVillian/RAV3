@@ -103,6 +103,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{fbe627b7-de2e-4125-ad88-56e3e1cea396}">
+		<property name="volume">
+			<value>-31</value>
+		</property>
 		<property name="name">
 			<value>Radiator</value>
 		</property>
@@ -145,6 +148,10 @@
 	</object>
 	<object class="MixerBusPanner" id="{c16dbba5-f8e6-46b2-9962-22b8c0a788a3}" />
 	<object class="MixerBusFader" id="{26ff509c-e379-4604-b40b-31426c88ce22}" />
-	<object class="SpatialiserEffect" id="{03730d3f-9527-450f-9eaa-730a03fc9fe9}" />
+	<object class="SpatialiserEffect" id="{03730d3f-9527-450f-9eaa-730a03fc9fe9}">
+		<property name="maximumDistance">
+			<value>3</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{0462fc31-1be9-450a-b369-3221d72261a4}" />
 </objects>

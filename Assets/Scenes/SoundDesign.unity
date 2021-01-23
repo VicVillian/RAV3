@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43940374, g: 0.48773998, b: 0.56797594, a: 1}
+  m_IndirectSpecularColor: {r: 0.43941516, g: 0.48775113, b: 0.5679827, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1011,6 +1011,7 @@ GameObject:
   - component: {fileID: 507751295}
   - component: {fileID: 507751294}
   - component: {fileID: 507751293}
+  - component: {fileID: 507751296}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1025,7 +1026,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 507751292}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &507751294
 Camera:
   m_ObjectHideFlags: 0
@@ -1083,6 +1084,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &507751296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 507751292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
+  ListenerNumber: -1
 --- !u!1001 &561879121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1432,6 +1447,35 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: e96674730c2d7ef40a1b5a75ff00e0a6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df0de12ef64f6854ba7a94013ffbff7e, type: 3}
+--- !u!1 &594453078 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9053164144009026745, guid: 863c72a95a5353844b6d1b882e15b91d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1602415320}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &594453082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594453078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Objects/Radiator
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &599873445
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2345,6 +2389,35 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 834873031}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &868772225 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9053164144009026745, guid: 863c72a95a5353844b6d1b882e15b91d,
+    type: 3}
+  m_PrefabInstance: {fileID: 453995981}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &868772229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868772225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Objects/Radiator
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &883461448
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2645,6 +2718,35 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 932263457}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &956591405 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9053164144009026745, guid: 863c72a95a5353844b6d1b882e15b91d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1203628137}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &956591409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956591405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Objects/Radiator
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &962259684
 GameObject:
   m_ObjectHideFlags: 0
@@ -5253,6 +5355,64 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1893877378}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1895514659 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9053164144009026745, guid: 863c72a95a5353844b6d1b882e15b91d,
+    type: 3}
+  m_PrefabInstance: {fileID: 424599891238946261}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1895514663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895514659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Objects/Radiator
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!1 &1904027356 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9053164144009026745, guid: 863c72a95a5353844b6d1b882e15b91d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1188604445}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1904027360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904027356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Objects/Radiator
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1918834904
 GameObject:
   m_ObjectHideFlags: 0
@@ -5389,6 +5549,35 @@ Transform:
   m_Father: {fileID: 1370411925}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1989434934 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9053164144009026745, guid: 863c72a95a5353844b6d1b882e15b91d,
+    type: 3}
+  m_PrefabInstance: {fileID: 883461448}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1989434938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989434934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Objects/Radiator
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &2005884890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58196,6 +58385,7 @@ GameObject:
   - component: {fileID: 6621444701690572533}
   - component: {fileID: 6593091694123307265}
   - component: {fileID: 6614494899158737799}
+  - component: {fileID: 6510099523089319576}
   m_Layer: 0
   m_Name: ExampleCamera
   m_TagString: MainCamera
@@ -58203,6 +58393,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6510099523089319576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6510099523089319575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
+  ListenerNumber: -1
 --- !u!1001 &6513372941621765581
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58996,7 +59200,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6510099523089319575}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!1001 &6595098679386748838
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -78234,6 +78438,7 @@ GameObject:
   - component: {fileID: 1949302556751741800}
   - component: {fileID: 5377385546126660095}
   - component: {fileID: 5421657752498364788}
+  - component: {fileID: 9053164143372573911}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -78241,6 +78446,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &9053164143372573911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9053164143372573910}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Objects/Radiator
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &9068656840655637065
 PrefabInstance:
   m_ObjectHideFlags: 0

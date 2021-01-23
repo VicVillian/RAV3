@@ -21,7 +21,7 @@ MonoBehaviour:
   IsOneShot: 0
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 3
   Length: 15387
 --- !u!114 &11400000
 MonoBehaviour:
@@ -45,7 +45,7 @@ MonoBehaviour:
   - {fileID: 2839690495008410292}
   StringsBanks:
   - {fileID: 5185337924301833172}
-  stringsBankWriteTime: 637469733640000000
+  stringsBankWriteTime: 637469761690000000
   cacheVersion: 6
 --- !u!114 &2839690495008410292
 MonoBehaviour:
@@ -62,7 +62,7 @@ MonoBehaviour:
   Path: FMOD RAV3/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637469733640000000
+  lastModified: 637469761690000000
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -81,7 +81,7 @@ MonoBehaviour:
   Path: FMOD RAV3/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637469733640000000
+  lastModified: 637469761690000000
   LoadResult: 0
   FileSizes:
   - Name: Desktop

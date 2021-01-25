@@ -21,7 +21,7 @@ MonoBehaviour:
   IsOneShot: 0
   Parameters: []
   MinDistance: 1
-  MaxDistance: 3
+  MaxDistance: 6.6
   Length: 15387
 --- !u!114 &11400000
 MonoBehaviour:
@@ -40,12 +40,13 @@ MonoBehaviour:
   - {fileID: 2839690495008410292}
   EditorEvents:
   - {fileID: -3966702101057502716}
+  - {fileID: 4123078249503633086}
   EditorParameters: []
   MasterBanks:
   - {fileID: 2839690495008410292}
   StringsBanks:
   - {fileID: 5185337924301833172}
-  stringsBankWriteTime: 637469761690000000
+  stringsBankWriteTime: 637471770980000000
   cacheVersion: 6
 --- !u!114 &2839690495008410292
 MonoBehaviour:
@@ -62,10 +63,33 @@ MonoBehaviour:
   Path: FMOD RAV3/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637469761690000000
+  lastModified: 637471770980000000
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &4123078249503633086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/footSteps
+  m_EditorClassIdentifier: 
+  Path: event:/Player/footSteps
+  guid: 36b68d723e4caa41ad1b65558726dcbf
+  Banks:
+  - {fileID: 2839690495008410292}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 719
 --- !u!114 &5185337924301833172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,9 +105,9 @@ MonoBehaviour:
   Path: FMOD RAV3/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637469761690000000
+  lastModified: 637471770980000000
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 742
+    Value: 800
   Exists: 1

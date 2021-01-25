@@ -4,6 +4,8 @@ using UnityEngine;
 using KinematicCharacterController;
 using System;
 
+
+
 namespace KinematicCharacterController.Examples
 {
     public enum CharacterState
@@ -49,6 +51,10 @@ namespace KinematicCharacterController.Examples
         public float StableMovementSharpness = 15f;
         public float OrientationSharpness = 10f;
         public OrientationMethod OrientationMethod = OrientationMethod.TowardsCamera;
+
+        public int walkingSpeed = 0;
+        public int walkingPause = 0;
+        DateTime start = DateTime.Now;
 
         [Header("Air Movement")]
         public float MaxAirMoveSpeed = 15f;
@@ -143,6 +149,7 @@ namespace KinematicCharacterController.Examples
         {
             // Clamp input
             Vector3 moveInputVector = Vector3.ClampMagnitude(new Vector3(inputs.MoveAxisRight, 0f, inputs.MoveAxisForward), 1f);
+
 
             // Calculate camera direction and rotation on the character plane
             Vector3 cameraPlanarDirection = Vector3.ProjectOnPlane(inputs.CameraRotation * Vector3.forward, Motor.CharacterUp).normalized;
@@ -257,6 +264,7 @@ namespace KinematicCharacterController.Examples
 
                                 // Move the position to create a rotation around the bottom hemi center instead of around the pivot
                                 Motor.SetTransientPosition(initialCharacterBottomHemiCenter + (currentRotation * Vector3.down * Motor.Capsule.radius));
+
                             }
                             else
                             {
@@ -290,20 +298,67 @@ namespace KinematicCharacterController.Examples
                         {
                             float currentVelocityMagnitude = currentVelocity.magnitude;
 
+                  
+
                             Vector3 effectiveGroundNormal = Motor.GroundingStatus.GroundNormal;
                             if (currentVelocityMagnitude > 0f && Motor.GroundingStatus.SnappingPrevented)
                             {
+
+                                
+
                                 // Take the normal from where we're coming from
                                 Vector3 groundPointToCharacter = Motor.TransientPosition - Motor.GroundingStatus.GroundPoint;
                                 if (Vector3.Dot(currentVelocity, groundPointToCharacter) >= 0f)
                                 {
+
+
+
                                     effectiveGroundNormal = Motor.GroundingStatus.OuterGroundNormal;
+
+
                                 }
                                 else
                                 {
+
+
+
                                     effectiveGroundNormal = Motor.GroundingStatus.InnerGroundNormal;
+
                                 }
                             }
+
+                            ///////////
+                            // vv Step when moving FMOD
+                            //////////
+                            ///
+                            /*
+                            float timer;
+                            void FixedUpdate()
+                            {
+                                timer += Time.deltaTime;
+
+
+                                if (timer > 1 & (Input.GetAxis("Vertical") > 0.2 | Input.GetAxis("Vertical") < 0 | Input.GetAxis("Horizontal") > 0 | Input.GetAxis("Horizontal") < 0))
+                                {
+
+                                    FMOD.Studio.EventInstance footSteps;
+                                    footSteps = FMODUnity.RuntimeManager.CreateInstance("event:/Player/footSteps");
+                                    //footSteps.start();
+                                    InvokeRepeating("footSteps", 0f, 0.4f);
+
+                                    timer -= 1;
+                                }
+  
+                            }
+                            */
+
+                            ///// no Timer
+                            ///
+
+                            
+
+                            
+
 
                             // Reorient velocity on slope
                             currentVelocity = Motor.GetDirectionTangentToSurface(currentVelocity, effectiveGroundNormal) * currentVelocityMagnitude;
@@ -312,6 +367,9 @@ namespace KinematicCharacterController.Examples
                             Vector3 inputRight = Vector3.Cross(_moveInputVector, Motor.CharacterUp);
                             Vector3 reorientedInput = Vector3.Cross(effectiveGroundNormal, inputRight).normalized * _moveInputVector.magnitude;
                             Vector3 targetMovementVelocity = reorientedInput * MaxStableMoveSpeed;
+
+                            // vv put sound in here
+
 
                             // Smooth movement Velocity
                             currentVelocity = Vector3.Lerp(currentVelocity, targetMovementVelocity, 1f - Mathf.Exp(-StableMovementSharpness * deltaTime));
@@ -322,6 +380,9 @@ namespace KinematicCharacterController.Examples
                             // Add move input
                             if (_moveInputVector.sqrMagnitude > 0f)
                             {
+
+
+
                                 Vector3 addedVelocity = _moveInputVector * AirAccelerationSpeed * deltaTime;
 
                                 Vector3 currentVelocityOnInputsPlane = Vector3.ProjectOnPlane(currentVelocity, Motor.CharacterUp);
@@ -464,7 +525,44 @@ namespace KinematicCharacterController.Examples
         }
 
         public void PostGroundingUpdate(float deltaTime)
+
+
         {
+            // /*
+            //// vv FMOD!!!
+            ///
+
+            
+            if (Input.GetAxis("Vertical") > 0.1f | Input.GetAxis("Vertical") < -0.1f | Input.GetAxis("Horizontal") > 0.1f | Input.GetAxis("Horizontal") < -0.1f)
+
+            {
+
+                if (walkingSpeed % 12 == 0)
+                // if (Math.Abs(walkingSpeed % 1) <= (Double.Epsilon * 1000)) 
+                // if (walkingSpeed == Math.Floor(walkingSpeed))
+                // if (walkingSpeed > 0)
+
+                {
+                    // walkingPause +=  new System.Threading.Timer(10000); 
+                    // walkingSpeed += deltaTime;
+                    // walkingSpeed = new System.Threading.Timer(10000);
+                    walkingSpeed += 1;
+                    FMOD.Studio.EventInstance footSteps;
+                    footSteps = FMODUnity.RuntimeManager.CreateInstance("event:/Player/footSteps");
+                    footSteps.start();
+                }
+                else {
+                    walkingSpeed += 1;
+                }
+                
+
+                // InvokeRepeating("footSteps", 0.5f, 1f);
+
+
+            }
+            // */
+
+
             // Handle landing and leaving ground
             if (Motor.GroundingStatus.IsStableOnGround && !Motor.LastGroundingStatus.IsStableOnGround)
             {

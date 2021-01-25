@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace KinematicCharacterController
 {
+
+
     public enum RigidbodyInteractionType
     {
         None,
@@ -153,6 +155,9 @@ namespace KinematicCharacterController
     [RequireComponent(typeof(CapsuleCollider))]
     public class KinematicCharacterMotor : MonoBehaviour
     {
+
+
+
 #pragma warning disable 0414
         [Header("Components")]
         /// <summary>
@@ -733,6 +738,10 @@ namespace KinematicCharacterController
 
         private void Awake()
         {
+
+
+            
+
             _transform = this.transform;
             ValidateData();
 
@@ -763,6 +772,8 @@ namespace KinematicCharacterController
         /// </summary>
         public void UpdatePhase1(float deltaTime)
         {
+            
+           
             // NaN propagation safety stop
             if (float.IsNaN(BaseVelocity.x) || float.IsNaN(BaseVelocity.y) || float.IsNaN(BaseVelocity.z))
             {
@@ -1498,6 +1509,7 @@ namespace KinematicCharacterController
                             Vector3 stepCastStartPoint = (tmpMovedPosition + (stepForwardDirection * SteppingForwardDistance)) +
                                 (_characterUp * MaxStepHeight);
 
+
                             // Cast downward from the top of the stepping height
                             int nbStepHits = CharacterCollisionsSweep(
                                                 stepCastStartPoint, // position
@@ -1531,6 +1543,10 @@ namespace KinematicCharacterController
                     // Handle movement solving
                     if (!foundValidStepHit)
                     {
+
+                        /// COLLISION with WALLS NBv
+
+
                         Vector3 obstructionNormal = GetObstructionNormal(closestSweepHitNormal, moveHitStabilityReport.IsStable);
 
                         // Movement hit callback
@@ -1582,10 +1598,12 @@ namespace KinematicCharacterController
                     if(KillRemainingMovementWhenExceedMaxMovementIterations)
                     {
                         remainingMovementMagnitude = 0f;
+
                     }
 
                     if (KillVelocityWhenExceedMaxMovementIterations)
                     {
+
                         transientVelocity = Vector3.zero;
                     }
                     wasCompleted = false;
@@ -2073,12 +2091,35 @@ namespace KinematicCharacterController
 
                     if (stabilityReport.ValidStepDetected)
                     {
+
+
+                        
+
                         stabilityReport.IsStable = true;
+
+
+                        // vv FOOTSTEPS
+                        // FindObjectOfType<CharacterSound>().footSteps();
+                        // FMODUnity.RuntimeManager.PlayOneShot("event:/Player/footSteps", GetComponent<Transform>().position);
+
+                        /*
+                        FMOD.Studio.EventInstance footSteps;
+                        footSteps = FMODUnity.RuntimeManager.CreateInstance("event:/Player/footSteps");
+                        footSteps.start();
+                        */
+
+                        // FMODUnity.RuntimeManager.PlayOneShot("event:/Player/footSteps");
+
+
                     }
+
                 }
             }
 
+
+
             CharacterController.ProcessHitStabilityReport(hitCollider, hitNormal, hitPoint, atCharacterPosition, atCharacterRotation, ref stabilityReport);
+
         }
 
         private void DetectSteps(Vector3 characterPosition, Quaternion characterRotation, Vector3 hitPoint, Vector3 innerHitDirection, ref HitStabilityReport stabilityReport)
@@ -2089,6 +2130,8 @@ namespace KinematicCharacterController
             Vector3 characterUp = characterRotation * _cachedWorldUp;
             Vector3 verticalCharToHit = Vector3.Project((hitPoint - characterPosition), characterUp);
             Vector3 stepCheckStartPos = (hitPoint - verticalCharToHit) + (characterUp * MaxStepHeight);
+
+
 
             // Do outer step check with capsule cast on hit point
             nbStepHits = CharacterCollisionsSweep(
@@ -2106,6 +2149,8 @@ namespace KinematicCharacterController
             {
                 stabilityReport.ValidStepDetected = true;
                 stabilityReport.SteppedCollider = tmpCollider;
+
+
             }
 
             if (StepHandling == StepHandlingMethod.Extra && !stabilityReport.ValidStepDetected)
@@ -2121,6 +2166,8 @@ namespace KinematicCharacterController
                                 _internalCharacterHits,
                                 0f,
                                 true);
+
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Player/footSteps");
 
                 // Check for overlaps and obstructions at the hit position
                 if (CheckStepValidity(nbStepHits, characterPosition, characterRotation, innerHitDirection, stepCheckStartPos, out tmpCollider))

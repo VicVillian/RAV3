@@ -994,7 +994,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 7011926068682785504}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2096063216}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76020eee813ed7844bcea94c5d5ce76a, type: 3}
@@ -5789,6 +5789,39 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2071974080}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2096063216 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3177027329472234024, guid: a01ef6cfe0d51b74697d97b9986e4dfd,
+    type: 3}
+  m_PrefabInstance: {fileID: 7011926068682785504}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2096063220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096063216}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32fc3ea0e99e844f4b80508112e92ce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2096063221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096063216}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 519d6add0592442c087d153fc5a7a20c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputsound: event:/Player/footSteps
+  playerIsMoving: 0
+  walkingSpeed: 0
 --- !u!1001 &2109069582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62406,6 +62439,11 @@ PrefabInstance:
         type: 3}
       propertyPath: MaxStableDistanceFromLedge
       value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3281887884837199194, guid: a01ef6cfe0d51b74697d97b9986e4dfd,
+        type: 3}
+      propertyPath: InteractiveRigidbodyHandling
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3312154055883613070, guid: a01ef6cfe0d51b74697d97b9986e4dfd,
         type: 3}

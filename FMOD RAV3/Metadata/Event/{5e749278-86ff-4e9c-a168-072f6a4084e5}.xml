@@ -70,6 +70,9 @@
 		<relationship name="modules">
 			<destination>{9b73a929-6b15-4afd-94bf-2865836b7065}</destination>
 		</relationship>
+		<relationship name="markers">
+			<destination>{a6e76638-79fb-4ded-a145-ecf7d8814448}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{8be39c68-184a-4122-9106-d0d22215acc6}">
 		<relationship name="effectChain">
@@ -92,9 +95,6 @@
 		<property name="length">
 			<value>5.0847619047619048</value>
 		</property>
-		<property name="playlistMode">
-			<value>1</value>
-		</property>
 		<relationship name="sounds">
 			<destination>{2ad14eb6-fcc7-4dba-9aaa-7a37fe5777e5}</destination>
 			<destination>{9aa83559-d155-4fb5-839e-95454dc10e2b}</destination>
@@ -104,6 +104,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{6a24a4f2-9e60-4003-a417-dd0adf1e486f}">
+		<property name="volume">
+			<value>-3</value>
+		</property>
 		<property name="name">
 			<value>Monsters</value>
 		</property>
@@ -115,6 +118,20 @@
 		</relationship>
 		<relationship name="output">
 			<destination>{8be39c68-184a-4122-9106-d0d22215acc6}</destination>
+		</relationship>
+	</object>
+	<object class="LoopRegion" id="{a6e76638-79fb-4ded-a145-ecf7d8814448}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="length">
+			<value>5.0847619047619048</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{4dc36a9d-263a-487e-9bd1-b4369224fbd4}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{a83dbb66-d844-495b-b57f-2137ccc2b955}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{22a564a3-4c68-4633-929a-fd00116f21ba}">

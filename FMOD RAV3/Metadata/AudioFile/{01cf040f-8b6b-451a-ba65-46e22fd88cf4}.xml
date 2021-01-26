@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.00.00">
-	<object class="AudioFile" id="{421460b2-7dd2-4469-a6dd-6bbe57d42b7c}">
+	<object class="AudioFile" id="{01cf040f-8b6b-451a-ba65-46e22fd88cf4}">
 		<property name="assetPath">
-			<value>Player/BreathHeavyMale_SFXB.1980.wav</value>
+			<value>Player/grunt NOcloseRVB/RAV3 grunt NOcloseRVBs -  13-GruntStrainMale_SFXB.2057.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
@@ -11,7 +11,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>5.9608163265306127</value>
+			<value>1.676485260770975</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{2fa8d943-c0b2-4d66-bb7e-44b649ec3d08}</destination>

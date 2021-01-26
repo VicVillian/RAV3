@@ -103,9 +103,11 @@ namespace KinematicCharacterController.Examples
 
 
         /// <summary>
-        /// vv FMOD STARTING methods
+        /// vv FMOD STARTING methods // DECLARE FMOD VARIABLES & INSTANCES
         /// </summary>
-        
+        FMOD.Studio.EventInstance breathing;
+        FMOD.Studio.EventInstance stomping;
+        /// public bool notBeginning;
 
         private void Awake()
         {
@@ -116,8 +118,11 @@ namespace KinematicCharacterController.Examples
             Motor.CharacterController = this;
 
 
-
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Player/breath");
+            // FMOD.Studio.EventInstance breathing;
+            breathing = FMODUnity.RuntimeManager.CreateInstance("event:/Player/breath");
+            breathing.start();
+            // stomping.stop(FMOD.Studio.STOP_MODE.IMMEDIATE); notBeginning = true;
+            // FMODUnity.RuntimeManager.PlayOneShot("event:/Player/breath");
             FMODUnity.RuntimeManager.PlayOneShot("event:/Music");
 
         }
@@ -199,6 +204,7 @@ namespace KinematicCharacterController.Examples
                         if (inputs.JumpDown)
                         {
                             _timeSinceJumpRequested = 0f;
+                            // FMODUnity.RuntimeManager.PlayOneShot("event:/Player/grunt");
                             _jumpRequested = true;
                         }
 
@@ -485,6 +491,14 @@ namespace KinematicCharacterController.Examples
                             // See if we actually are allowed to jump
                             if (!_jumpConsumed && ((AllowJumpingWhenSliding ? Motor.GroundingStatus.FoundAnyGround : Motor.GroundingStatus.IsStableOnGround) || _timeSinceLastAbleToJump <= JumpPostGroundingGraceTime))
                             {
+
+                                //// FMOD JUMPING GRUNT
+                                ///
+                                FMODUnity.RuntimeManager.PlayOneShot("event:/Player/grunt");
+                                breathing.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+
+
+
                                 // Calculate jump direction before ungrounding
                                 Vector3 jumpDirection = Motor.CharacterUp;
                                 if (Motor.GroundingStatus.FoundAnyGround && !Motor.GroundingStatus.IsStableOnGround)
@@ -503,6 +517,7 @@ namespace KinematicCharacterController.Examples
                                 _jumpConsumed = true;
                                 _jumpedThisFrame = true;
                             }
+                            
                         }
 
                         // Take into account additive velocity
@@ -582,11 +597,12 @@ namespace KinematicCharacterController.Examples
 
         {
             //   /*
-            //// vv FMOD!!! FMOD working
-            ///
+            ////////// vv FMOD FOOTSTEPS
+            ////////////////////////////////////
 
             
-            if (Input.GetAxis("Vertical") > 0.1f | Input.GetAxis("Vertical") < -0.1f | Input.GetAxis("Horizontal") > 0.1f | Input.GetAxis("Horizontal") < -0.1f)
+
+            if (_jumpConsumed != true & (Input.GetAxis("Vertical") > 0.1f | Input.GetAxis("Vertical") < -0.1f | Input.GetAxis("Horizontal") > 0.1f | Input.GetAxis("Horizontal") < -0.1f))
 
             {
 
@@ -594,7 +610,7 @@ namespace KinematicCharacterController.Examples
                 
 
                 {
-             
+                    
                     walkingSpeed += 1;
                     FMOD.Studio.EventInstance footSteps;
                     footSteps = FMODUnity.RuntimeManager.CreateInstance("event:/Player/footSteps");
@@ -617,6 +633,12 @@ namespace KinematicCharacterController.Examples
             // Handle landing and leaving ground
             if (Motor.GroundingStatus.IsStableOnGround && !Motor.LastGroundingStatus.IsStableOnGround)
             {
+                /// FMOD STOMP FMOD START BREATHING & 
+
+                stomping = FMODUnity.RuntimeManager.CreateInstance("event:/Player/stomp");
+                stomping.start();
+                breathing.start();
+                
                 OnLanded();
             }
             else if (!Motor.GroundingStatus.IsStableOnGround && Motor.LastGroundingStatus.IsStableOnGround)

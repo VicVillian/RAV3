@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{3cba0db8-8eff-4563-bef7-723813e6bca2}">
+		<property name="assetPath">
+			<value>Player/stomp/RAV3 stomp -  18-ARMY STOMP B.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.2353061224489794</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{2fa8d943-c0b2-4d66-bb7e-44b649ec3d08}</destination>
+		</relationship>
+	</object>
+</objects>

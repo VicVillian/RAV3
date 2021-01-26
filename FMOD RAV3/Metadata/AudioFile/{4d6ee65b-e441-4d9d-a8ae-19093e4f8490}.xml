@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{4d6ee65b-e441-4d9d-a8ae-19093e4f8490}">
+		<property name="assetPath">
+			<value>Objects/window screams/ScreamLongFemale_SFXB.2097.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.8457369614512471</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{2fa8d943-c0b2-4d66-bb7e-44b649ec3d08}</destination>
+		</relationship>
+	</object>
+</objects>

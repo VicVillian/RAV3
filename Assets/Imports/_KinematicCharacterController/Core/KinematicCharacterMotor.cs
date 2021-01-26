@@ -666,6 +666,7 @@ namespace KinematicCharacterController
         {
             _movePositionDirty = true;
             _movePositionTarget = toPosition;
+
         }
 
         /// <summary>
@@ -695,6 +696,7 @@ namespace KinematicCharacterController
             state.LastMovementIterationFoundAnyGround = LastMovementIterationFoundAnyGround;
             state.GroundingStatus.CopyFrom(GroundingStatus);
             state.AttachedRigidbody = _attachedRigidbody;
+
 
             return state;
         }
@@ -2167,13 +2169,15 @@ namespace KinematicCharacterController
                                 0f,
                                 true);
 
-                FMODUnity.RuntimeManager.PlayOneShot("event:/Player/footSteps");
+                // FMODUnity.RuntimeManager.PlayOneShot("event:/Player/footSteps");
 
                 // Check for overlaps and obstructions at the hit position
                 if (CheckStepValidity(nbStepHits, characterPosition, characterRotation, innerHitDirection, stepCheckStartPos, out tmpCollider))
                 {
                     stabilityReport.ValidStepDetected = true;
                     stabilityReport.SteppedCollider = tmpCollider;
+
+
                 }
             }
         }
@@ -2272,6 +2276,8 @@ namespace KinematicCharacterController
                                         if (IsStableOnNormal(innerStepHit.normal))
                                         {
                                             innerStepValid = true;
+
+
                                         }
                                     }
                                 }
@@ -2281,6 +2287,7 @@ namespace KinematicCharacterController
                                 {
                                     hitCollider = farthestHit.collider;
                                     foundValidStepPosition = true;
+
                                     return true;
                                 }
                             }
@@ -2295,6 +2302,7 @@ namespace KinematicCharacterController
                     if (farthestIndex < nbStepHits)
                     {
                         _internalCharacterHits[farthestIndex] = _internalCharacterHits[nbStepHits];
+
                     }
                 }
             }
@@ -2320,6 +2328,7 @@ namespace KinematicCharacterController
                     Vector3 finalPointPosition = centerOfRotation + (rotationFromInteractiveRigidbody * centerOfRotationToPoint);
                     effectiveMoverVelocity += (finalPointPosition - atPoint) / deltaTime;
                 }
+
                 return effectiveMoverVelocity;
             }
             else

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{89d22fdb-4839-4fad-b28d-98693e056776}">
+		<property name="assetPath">
+			<value>Player/Footsteps + Xeno verb - b/RAV3 FOOT Xeno -b -  12-FS_Concrete_03.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.8627664399092971</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{2fa8d943-c0b2-4d66-bb7e-44b649ec3d08}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -8,6 +8,9 @@ using System;
 
 namespace KinematicCharacterController.Examples
 {
+
+
+
     public enum CharacterState
     {
         Default,
@@ -44,6 +47,9 @@ namespace KinematicCharacterController.Examples
 
     public class ExampleCharacterController : MonoBehaviour, ICharacterController
     {
+
+        
+
         public KinematicCharacterMotor Motor;
 
         [Header("Stable Movement")]
@@ -54,6 +60,7 @@ namespace KinematicCharacterController.Examples
 
         public int walkingSpeed = 0;
         public int walkingPause = 0;
+        public int breathCount = 0;
         DateTime start = DateTime.Now;
 
         [Header("Air Movement")]
@@ -94,6 +101,12 @@ namespace KinematicCharacterController.Examples
         private Vector3 lastInnerNormal = Vector3.zero;
         private Vector3 lastOuterNormal = Vector3.zero;
 
+
+        /// <summary>
+        /// vv FMOD STARTING methods
+        /// </summary>
+        
+
         private void Awake()
         {
             // Handle initial state
@@ -101,6 +114,12 @@ namespace KinematicCharacterController.Examples
 
             // Assign the characterController to the motor
             Motor.CharacterController = this;
+
+
+
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Player/breath");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Music");
+
         }
 
         /// <summary>
@@ -311,6 +330,38 @@ namespace KinematicCharacterController.Examples
                                 if (Vector3.Dot(currentVelocity, groundPointToCharacter) >= 0f)
                                 {
 
+                                    /*
+                                    //// try FMOD 1
+                                    ///
+                                    if (Input.GetAxis("Vertical") > 0.1f | Input.GetAxis("Vertical") < -0.1f | Input.GetAxis("Horizontal") > 0.1f | Input.GetAxis("Horizontal") < -0.1f)
+
+                                    {
+
+                                        if (walkingSpeed % 12 == 0)
+                                        // if (Math.Abs(walkingSpeed % 1) <= (Double.Epsilon * 1000)) 
+                                        // if (walkingSpeed == Math.Floor(walkingSpeed))
+                                        // if (walkingSpeed > 0)
+
+                                        {
+                                            // walkingPause +=  new System.Threading.Timer(10000); 
+                                            // walkingSpeed += deltaTime;
+                                            // walkingSpeed = new System.Threading.Timer(10000);
+                                            walkingSpeed += 1;
+                                            FMOD.Studio.EventInstance footSteps;
+                                            footSteps = FMODUnity.RuntimeManager.CreateInstance("event:/Player/footSteps");
+                                            footSteps.start();
+                                        }
+                                        else
+                                        {
+                                            walkingSpeed += 1;
+                                        }
+
+
+                                        // InvokeRepeating("footSteps", 0.5f, 1f);
+
+
+                                    }
+                                    */
 
 
                                     effectiveGroundNormal = Motor.GroundingStatus.OuterGroundNormal;
@@ -381,7 +432,7 @@ namespace KinematicCharacterController.Examples
                             if (_moveInputVector.sqrMagnitude > 0f)
                             {
 
-
+                                
 
                                 Vector3 addedVelocity = _moveInputVector * AirAccelerationSpeed * deltaTime;
 
@@ -393,6 +444,8 @@ namespace KinematicCharacterController.Examples
                                     // clamp addedVel to make total vel not exceed max vel on inputs plane
                                     Vector3 newTotal = Vector3.ClampMagnitude(currentVelocityOnInputsPlane + addedVelocity, MaxAirMoveSpeed);
                                     addedVelocity = newTotal - currentVelocityOnInputsPlane;
+
+                                   
                                 }
                                 else
                                 {
@@ -528,8 +581,8 @@ namespace KinematicCharacterController.Examples
 
 
         {
-            // /*
-            //// vv FMOD!!!
+            //   /*
+            //// vv FMOD!!! FMOD working
             ///
 
             
@@ -538,21 +591,19 @@ namespace KinematicCharacterController.Examples
             {
 
                 if (walkingSpeed % 12 == 0)
-                // if (Math.Abs(walkingSpeed % 1) <= (Double.Epsilon * 1000)) 
-                // if (walkingSpeed == Math.Floor(walkingSpeed))
-                // if (walkingSpeed > 0)
+                
 
                 {
-                    // walkingPause +=  new System.Threading.Timer(10000); 
-                    // walkingSpeed += deltaTime;
-                    // walkingSpeed = new System.Threading.Timer(10000);
+             
                     walkingSpeed += 1;
                     FMOD.Studio.EventInstance footSteps;
                     footSteps = FMODUnity.RuntimeManager.CreateInstance("event:/Player/footSteps");
                     footSteps.start();
+                    
                 }
                 else {
                     walkingSpeed += 1;
+                  
                 }
                 
 
@@ -560,7 +611,7 @@ namespace KinematicCharacterController.Examples
 
 
             }
-            // */
+            //   */
 
 
             // Handle landing and leaving ground
@@ -578,6 +629,7 @@ namespace KinematicCharacterController.Examples
         {
             if (IgnoredColliders.Count == 0)
             {
+
                 return true;
             }
 
@@ -595,6 +647,16 @@ namespace KinematicCharacterController.Examples
 
         public void OnMovementHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)
         {
+
+            // walkingSpeed -= 1;
+            // /*
+            if (walkingSpeed % 12 == 0)
+            {
+                walkingSpeed -= 1;
+
+                // FMODUnity.RuntimeManager.PlayOneShot("event:/Player/grunt");
+            }
+            // */ 
         }
 
         public void AddVelocity(Vector3 velocity)
@@ -622,7 +684,10 @@ namespace KinematicCharacterController.Examples
         }
 
         public void OnDiscreteCollisionDetected(Collider hitCollider)
+
         {
+
+            
         }
     }
 }
